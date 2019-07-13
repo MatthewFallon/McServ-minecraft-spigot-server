@@ -1,5 +1,5 @@
 [Unit]
-Description= Spigot Minecraft Service
+Description=Spigot Minecraft Service
 
 Wants=network.target
 After=network.target
@@ -11,10 +11,18 @@ Type=simple
 NoNewPrivileges=true
 ProtectSystem=strict
 ProtectHome=true
+PrivateDevices=true
+ReadWritePaths=/var/lib/McServ
+CapabilityBoundingSet=~CAP_SYS_ADMIN
+ProtectKernelTunables=true
+PrivateTmp=true
 
-
+#Standard start command and working directory of binary
+WorkingDirectory=/var/lib/McServ
 
 ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar spigot.jar --noconsole
+
+Restart=on-success
 
 
 
