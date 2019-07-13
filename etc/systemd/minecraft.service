@@ -1,0 +1,22 @@
+[Unit]
+Description= Spigot Minecraft Service
+
+Wants=network.target
+After=network.target
+
+[Service]
+Type=simple
+
+#Basic security and sandboxing rules for the service
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+
+
+
+ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar spigot.jar --noconsole
+
+
+
+[Install]
+WantedBy=multi-user.target
